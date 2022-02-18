@@ -123,7 +123,7 @@ Config File: <textarea id="config" on:change={()=>updateFromTextarea()}>{JSON.st
         <button style="background-color: transparent" on:click={()=> param.count++}>
 		+
 		</button>
-        {param.count}
+        {(param.count+(param.linkCount ? param.linkCount : 0))}
         <button style="background-color: transparent" on:click={()=> param.count--}>
 		-
 		</button></td><td>{(param.points*(param.count+(param.linkCount ? param.linkCount : 0)))}</td>
