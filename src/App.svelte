@@ -7,34 +7,26 @@
 </style>
 <script>
 var ffParams = [
-		{ name: 'Duck Delivery', points: 10, type:"bool", pointsAwarded: false, group: "Autonomous"},
-		{ name: 'Freight In Storage', points: 2, type:"infinite", count: 0, group: "Autonomous", linkToId: "ts"},
-		{ name: 'Freight In Hub L1', points: 6, type:"infinite", count: 0, group: "Autonomous", linkToId: "t1"},
-		{ name: 'Freight In Hub L2', points: 6, type:"infinite", count: 0, group: "Autonomous", linkToId: "t2"},
-		{ name: 'Freight In Hub L3', points: 6, type:"infinite", count: 0, group: "Autonomous", linkToId: "t3"},
-		{ name: 'Freight Bonus 1', type:"choice", choices:{"Team": 20, "Duck": 10, "None": 0}, choice: "None", group: "Autonomous"},
-        { name: 'Freight Bonus 2', type:"choice", choices:{"Team": 20, "Duck": 10, "None": 0}, choice: "None", group: "Autonomous"},
-		{ name: 'Parking 1 Storage Unit', type:"choice", choices:{"Full": 6, "Partly": 3, "None": 0}, choice: "None", group: "Autonomous"},
-		{ name: 'Parking 1 Warehouse', type:"choice", choices:{"Full": 10, "Partly": 5, "None": 0}, choice: "None", group: "Autonomous"},
-		{ name: 'Parking 2 Storage Unit', type:"choice", choices:{"Full": 6, "Partly": 3, "None": 0}, choice: "None", group: "Autonomous"},
-		{ name: 'Parking 2 Warehouse', type:"choice", choices:{"Full": 10, "Partly": 5, "None": 0}, choice: "None", group: "Autonomous"},
+		{ name: 'Parked in Terminal or Substation', points: 2, type:"bool", pointsAwarded: false, group: "Autonomous"},
+		{ name: 'Cone in Terminal', points: 1, type:"infinite", pointsAwarded: false, group: "Autonomous", linkToId: "ts"},
+		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "Autonomous", linkToId: "t1"},
+		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "Autonomous", linkToId: "t2"},
+		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "Autonomous", linkToId: "t3"},
+		{ name: 'High', points: 5, type:"infinite", count: 0, group: "Autonomous", linkToId: "t4"},
+		{ name: 'Signal Zone Park', type:"choice", choices:{"Team Signal": 20, "Signal": 10, "None": 0}, choice: "None", group: "Autonomous"},
 		
 		
-		
-		{ name: 'Freight In Storage', points: 1, type:"infinite", count: 0, group: "TeleOp", id: "ts", linkCount: 0},
-		{ name: 'Freight In Hub L1', points: 2, type:"infinite", count: 0, group: "TeleOp", id: "t1", linkCount: 0},
-		{ name: 'Freight In Hub L2', points: 4, type:"infinite", count: 0, group: "TeleOp", id: "t2", linkCount: 0},
-		{ name: 'Freight In Hub L3', points: 6, type:"infinite", count: 0, group: "TeleOp", id: "t3", linkCount: 0},
-		{ name: 'Freight In Shared', points: 4, type:"infinite", count: 0, group: "TeleOp"},
-		
+		{ name: 'Cone in Terminal', points: 1, type:"infinite", count: 0, group: "TeleOp", id: "ts", linkCount: 0},
+		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "TeleOp", linkToId: "t1", linkCount: 0},
+		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "TeleOp", linkToId: "t2", linkCount: 0},
+		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "TeleOp", linkToId: "t3", linkCount: 0},
+		{ name: 'High', points: 5, type:"infinite", count: 0, group: "TeleOp", linkToId: "t4", linkCount: 0},
 		
 		
-		{ name: 'Ducks Delivered', points: 6, type:"infinite", count: 0, group: "End Game"},
-		{ name: 'Alliance Shipping Hub', type:"choice", choices:{"Balanced": 10, "Leaning": 0}, choice: "Leaning", group: "End Game"},
-		{ name: 'Shared Shipping Hub', type:"choice", choices:{"Leaning": 20, "Balanced": 0}, choice: "Balanced", group: "End Game"},
-		{ name: 'Parking 1', type:"choice", choices:{"Full": 6, "Partly": 3, "None": 0}, choice: "None", group: "End Game"},
-		{ name: 'Parking 2', type:"choice", choices:{"Full": 6, "Partly": 3, "None": 0}, choice: "None", group: "End Game"},
-		{ name: 'Capping', type:"choice", choices:{"Two": 30, "One": 15, "Zero": 0}, choice: "Zero", group: "End Game"}
+		{ name: 'Parked in Terminal', points: 2, type:"bool", pointsAwarded: false, group: "End Game"},
+		{ name: 'Alliance Cone Own Junction', points: 3, type:"infinite", count: 0, group: "End Game"},
+		{ name: 'Junction Owned by Beacon', type:"choice", choices:{"Yes": 10, "No": 0}, choice: "No", group: "End Game"},
+		{ name: 'Completed Circuit', type:"choice", choices:{"Yes": 20, "No": 0}, choice: "No", group: "End Game"},
 	];
 
 
