@@ -7,15 +7,17 @@
 </style>
 <script>
 var ppParams = [
-		{ name: 'Cone in Terminal', points: 1, type:"infinite", count: 0, group: "Autonomous"},
+		{ name: 'Cones in Terminal', points: 1, type:"infinite", count: 0, group: "Autonomous"},
 		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "Autonomous"},
 		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "Autonomous"},
 		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "Autonomous"},
 		{ name: 'High', points: 5, type:"infinite", count: 0, group: "Autonomous"},
-		{ name: 'Parking', type:"choice", choices:{"None": 0, "Terminal": 2, "Substation": 2, "Default Signal": 10, "Custom Signal": 20}, choice: "None", group: "Autonomous"},
+		{ name: 'Parking - Bot 1', type:"choice", choices:{"None": 0, "Terminal": 2, "Substation": 2, "Default Signal": 10, "Custom Signal": 20}, choice: "None", group: "Autonomous"},
+        { name: 'Parking - Bot 2', type:"choice", choices:{"None": 0, "Terminal": 2, "Substation": 2, "Default Signal": 10, "Custom Signal": 20}, choice: "None", group: "Autonomous"},
+
 		
 		
-		{ name: 'Cone in Terminal', points: 1, type:"infinite", count: 0, group: "TeleOp"},
+		{ name: 'Cones in Terminal', points: 1, type:"infinite", count: 0, group: "TeleOp"},
 		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "TeleOp"},
 		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "TeleOp"},
 		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "TeleOp"},
