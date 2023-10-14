@@ -6,28 +6,59 @@
 	}
 </style>
 <script>
+var csParams = [
+		{ name: 'Purple Pixel Placement - Bot 1', type:"choice", choices:{"N/A": 0, "Pixel": 10, "Team Prop": 20}, choice: "N/A", group: "Autonomous"},
+        { name: 'Yellow Pixel Placement - Bot 1', type:"choice", choices:{"N/A": 0, "Pixel": 10, "Team Prop": 20}, choice: "N/A", group: "Autonomous"},
+        
+        { name: 'Purple Pixel Placement - Bot 2', type:"choice", choices:{"N/A": 0, "Pixel": 10, "Team Prop": 20}, choice: "N/A", group: "Autonomous"},
+        { name: 'Yellow Pixel Placement - Bot 2', type:"choice", choices:{"N/A": 0, "Pixel": 10, "Team Prop": 20}, choice: "N/A", group: "Autonomous"},
+
+        { name: 'Backstage Pixels', points: 3, type:"infinite", count: 0, group: "Autonomous", linkToId:"backstage"},
+        { name: 'Backdrop Pixels', points: 5, type:"infinite", count: 0, group: "Autonomous", linkToId:"backdrop"},
+		
+        { name: 'Bots Parked Backstage', type:"choice", choices:{"N/A": 0, "One": 5, "Both": 10}, choice: "N/A", group: "Autonomous"},
+		
+
+		
+
+        { name: 'Backstage Pixels', points: 1, type:"infinite", count: 0, id:"backstage", group: "TeleOp", linkCount:0},
+        { name: 'Backdrop Pixels', points: 3, type:"infinite", count: 0, id:"backdrop", group: "TeleOp", linkCount:0},
+        { name: 'Mosaics', points: 10, type:"infinite", count: 0, group: "TeleOp"},
+
+        { name: 'Highest Set Line', type:"choice", choices:{"N/A": 0, "1": 10, "2": 20, "3": 30}, choice: "N/A", group: "TeleOp"},
+
+
+
+
+        { name: 'Bot 1 Position', type:"choice", choices:{"N/A": 0, "Backstage": 5, "Rigging": 20}, choice: "N/A", group: "End Game"},
+        { name: 'Bot 2 Position', type:"choice", choices:{"N/A": 0, "Backstage": 5, "Rigging": 20}, choice: "N/A", group: "End Game"},
+
+        { name: 'Bot 1 Drone Zone', type:"choice", choices:{"N/A": 0, "1": 30, "2": 20, "3": 10}, choice: "N/A", group: "End Game"},
+        { name: 'Bot 2 Drone Zone', type:"choice", choices:{"N/A": 0, "1": 30, "2": 20, "3": 10}, choice: "N/A", group: "End Game"}
+	];
+
 var ppParams = [
-		{ name: 'Cones in Terminal', points: 1, type:"infinite", count: 0, group: "Autonomous"},
-		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "Autonomous"},
-		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "Autonomous"},
-		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "Autonomous"},
-		{ name: 'High', points: 5, type:"infinite", count: 0, group: "Autonomous"},
+		{ name: 'Cones in Terminal', points: 1, type:"infinite", count: 0, group: "Autonomous", linkToId:"t"},
+		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "Autonomous", linkToId:"g"},
+		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "Autonomous", linkToId:"l"},
+		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "Autonomous", linkToId:"m"},
+		{ name: 'High', points: 5, type:"infinite", count: 0, group: "Autonomous", linkToId:"h"},
 		{ name: 'Parking - Bot 1', type:"choice", choices:{"None": 0, "Terminal": 2, "Substation": 2, "Default Signal": 10, "Custom Signal": 20}, choice: "None", group: "Autonomous"},
         { name: 'Parking - Bot 2', type:"choice", choices:{"None": 0, "Terminal": 2, "Substation": 2, "Default Signal": 10, "Custom Signal": 20}, choice: "None", group: "Autonomous"},
 
 		
 		
-		{ name: 'Cones in Terminal', points: 1, type:"infinite", count: 0, group: "TeleOp"},
-		{ name: 'Ground', points: 2, type:"infinite", count: 0, group: "TeleOp"},
-		{ name: 'Low', points: 3, type:"infinite", count: 0, group: "TeleOp"},
-		{ name: 'Medium', points: 4, type:"infinite", count: 0, group: "TeleOp"},
-		{ name: 'High', points: 5, type:"infinite", count: 0, group: "TeleOp"},
+		{ name: 'Cones in Terminal', points: 1, type:"infinite", count: 0, id:"t", group: "TeleOp", linkCount:0},
+		{ name: 'Ground', points: 2, type:"infinite", count: 0, id:"g", group: "TeleOp", linkCount:0},
+		{ name: 'Low', points: 3, type:"infinite", count: 0, id:"l", group: "TeleOp", linkCount:0},
+		{ name: 'Medium', points: 4, type:"infinite", count: 0, id:"m", group: "TeleOp", linkCount:0},
+		{ name: 'High', points: 5, type:"infinite", count: 0, id:"h", group: "TeleOp", linkCount:0},
 		
 		
 		{ name: 'Robots Parked in Terminal', type: "choice", choices:{"None": 0, "One": 2, "Two": 4}, choice: "None", group: "End Game"},
 		{ name: 'Alliance Cone Owned Junctions', points: 3, type:"infinite", count: 0, group: "End Game"},
 		{ name: 'Beacon Owned Junctions', type:"choice", choices:{"None": 0, "One": 10, "Two": 20}, choice: "None", group: "End Game"},
-		{ name: 'Completed Circuit', type:"choice", choices:{"Yes": 20, "No": 0}, choice: "No", group: "End Game"},
+		{ name: 'Completed Circuit', type:"choice", choices:{"Yes": 20, "No": 0}, choice: "No", group: "End Game"}
 	];
 
     var ffParams = [
@@ -67,9 +98,8 @@ var parameters;
 if (localStorage.getItem("config")!=null) {
     parameters = JSON.parse(localStorage.getItem("config"));
 } else {
-    parameters = [...ppParams];
+    parameters = [...csParams];
 }
-
 
 
 
@@ -121,16 +151,19 @@ if (localStorage.getItem("config")!=null) {
 	}
 
 
-    function updateFromTextarea() {
+ /*   function updateFromTextarea() {
         parameters = JSON.parse(document.getElementById("config").value);
         localStorage.setItem("config", JSON.stringify(parameters));
-    }
+    }*/
 </script>
 
-<h1>FTC Scorer ~ 17301</h1>
-Config File: <textarea id="config" on:change={()=>updateFromTextarea()}>{JSON.stringify(parameters)}</textarea>
-<button on:click={() => {parameters = ppParams; localStorage.setItem("config", JSON.stringify(parameters));}}>Revert to Power Play Config File</button>
-<button on:click={() => {parameters = ffParams; localStorage.setItem("config", JSON.stringify(parameters));}}>Revert to Freight Frenzy Config File</button>
+<h1>FTC Scorer ~ 7715</h1>
+Season Selection:
+{#if parameters}
+<button style="background-color: {JSON.stringify(parameters) == JSON.stringify(csParams) ? 'lightgreen' : 'transparent'}" on:click={() => {parameters = csParams; localStorage.setItem("config", JSON.stringify(parameters));}}>Center Stage</button>
+<button style="background-color: {JSON.stringify(parameters) == JSON.stringify(ppParams) ? 'lightgreen' : 'transparent'}" on:click={() => {parameters = ppParams; localStorage.setItem("config", JSON.stringify(parameters));}}>Power Play</button>
+<button style="background-color: {JSON.stringify(parameters) == JSON.stringify(ffParams) ? 'lightgreen' : 'transparent'}" on:click={() => {parameters = ffParams; localStorage.setItem("config", JSON.stringify(parameters));}}>Freight Frenzy</button>
+{/if}
 <hr>
 
 
@@ -186,3 +219,5 @@ Config File: <textarea id="config" on:change={()=>updateFromTextarea()}>{JSON.st
 <h2>
 	Total Points : {totalPoints}
 </h2>
+<hr>
+<p>Created for use by all FTC teams. Designed by Team 7715, the Robotic Lions. &#129302; &#129409;</p>
